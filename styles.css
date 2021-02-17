@@ -1,13 +1,13 @@
 #myDIV {
     border: 1px solid black;
-    width: 100vw;
-    height: 100vh;
+    width: 99vw;
+    height: 99vh;
     overflow: scroll;
 }
 
 #box {
-    height: 190vh;
-    width: 220vw;
+    height: 195vh;
+    width: 195vw;
     background-color: blanchedalmond;
 }
 
