@@ -46,9 +46,6 @@ const fireLaser = (e) => {
     const enemy = e.target.getBoundingClientRect();
     const movingPlayer = player.getBoundingClientRect();
 
-    console.log('this is the enemy ', enemy);
-    console.log('this is the player ', movingPlayer);
-
     const laser = document.createElement('div');
     laser.setAttribute('id', 'laser');
 
@@ -61,8 +58,9 @@ const fireLaser = (e) => {
     setInterval(() => {
         movingLaser.style.left = `${enemy.left + 10}px`;
         movingLaser.style.top = `${enemy.top + 50}px`;
-    },700);
+    }, 200);
     setInterval(() => {
         movingLaser.remove();
-    },900);
+        e.target.parentNode.remove();
+    }, 850);
 }
