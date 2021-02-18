@@ -28,13 +28,13 @@ setInterval(() => {
 }, 5000);
 
 // Motion detector
-const detectHit = (enemyLocation) => {
-    const enemy = enemyLocation.getBoundingClientRect();
-    const movingPlayer = player.getBoundingClientRect();
-    if (movingPlayer.left <= enemy.right) {
-        if (movingPlayer.top <= enemy.bottom) {
-            if (movingPlayer.bottom >= enemy.top) {
-                if (movingPlayer.right >= enemy.left) {
+const detectHit = (enemy) => {
+    const enemyLocation = enemy.getBoundingClientRect();
+    const playerLocation = player.getBoundingClientRect();
+    if (playerLocation.left <= enemyLocation.right) {
+        if (playerLocation.top <= enemyLocation.bottom) {
+            if (playerLocation.bottom >= enemyLocation.top) {
+                if (playerLocation.right >= enemyLocation.left) {
                     return alert('left you bumped into an alien');
                 }
             }
@@ -43,21 +43,22 @@ const detectHit = (enemyLocation) => {
 };
 
 const fireLaser = (e) => {
-    const enemy = e.target.getBoundingClientRect();
-    const movingPlayer = player.getBoundingClientRect();
+    if (document.querySelector('#laser')) return;
+    const enemyLocation = e.target.getBoundingClientRect();
+    const playerLocation = player.getBoundingClientRect();
 
-    const laser = document.createElement('div');
+    const laser = document.createElement('div');    
     laser.setAttribute('id', 'laser');
 
     playField.appendChild(laser);
 
     const movingLaser = document.querySelector('#laser');
-    movingLaser.style.left = `${movingPlayer.left + 10}px`;
-    movingLaser.style.top = `${movingPlayer.top + 30}px`;
+    movingLaser.style.left = `${playerLocation.left + 10}px`;
+    movingLaser.style.top = `${playerLocation.top + 30}px`;
 
     setInterval(() => {
-        movingLaser.style.left = `${enemy.left + 10}px`;
-        movingLaser.style.top = `${enemy.top + 50}px`;
+        movingLaser.style.left = `${enemyLocation.left + 10}px`;
+        movingLaser.style.top = `${enemyLocation.top + 50}px`;
     }, 200);
     setInterval(() => {
         movingLaser.remove();

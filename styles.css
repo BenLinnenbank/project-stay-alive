@@ -30,12 +30,10 @@ img {
     position: absolute;
     height: 60px;
     width: 60px;
-    left: 700px;
-    top: 400px;
 }
 
 #laser {
-    background: black;
+    background: purple;
     position: absolute;
     height: 15px;
     width: 15px;
