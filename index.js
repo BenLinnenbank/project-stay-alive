@@ -25,7 +25,7 @@ setInterval(() => {
     alien.style.top = `${Math.floor(Math.random() * Math.floor(500))}px`;
     alien.addEventListener('click', (e) => fireLaser(e));
     playField.appendChild(alien);
-}, 5000);
+}, 1000);
 
 // Motion detector
 const detectHit = (enemy) => {
