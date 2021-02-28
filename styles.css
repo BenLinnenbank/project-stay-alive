@@ -41,8 +41,31 @@ img {
     transition: all .9s ease;
 }
 
-::-webkit-scrollbar {
-    display: none;
-    
+#score {
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+#explosion {
+    position: absolute;
+    background: url('./assets/Explos.png')left center;
+    width: 100px;
+    height: 60px;
+    background-size: cover;
+    animation: play 0.8s steps(10) infinite;
+}
+
+@keyframes play {
+    100% {
+        background-position: -1000px;
+    }
+}

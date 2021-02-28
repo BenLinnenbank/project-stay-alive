@@ -12,8 +12,7 @@ document.getElementById("myDIV").onscroll = () => {
     });
 };
 
-// veriable counting score
-
+// Variable counting score
 let scoreCount = 0;
 
 // Random enemy generator
@@ -51,24 +50,34 @@ const fireLaser = (e) => {
     const enemyLocation = e.target.getBoundingClientRect();
     const playerLocation = player.getBoundingClientRect();
 
-    scoreCount++;
-    console.log(scoreCount)
-
     const laser = document.createElement('div');    
     laser.setAttribute('id', 'laser');
-
+    
+    const explosion = document.createElement('div');
+    
     playField.appendChild(laser);
-
+    
     const movingLaser = document.querySelector('#laser');
     movingLaser.style.left = `${playerLocation.left + 10}px`;
     movingLaser.style.top = `${playerLocation.top + 30}px`;
-
-    setInterval(() => {
+    
+    setTimeout(() => {
         movingLaser.style.left = `${enemyLocation.left + 10}px`;
         movingLaser.style.top = `${enemyLocation.top + 50}px`;
     }, 200);
-    setInterval(() => {
+
+    setTimeout(() => {
+        playField.appendChild(explosion);
+        explosion.setAttribute('id', 'explosion');
+        explosion.style.left = `${enemyLocation.left - 20}px`;
+        explosion.style.top = `${enemyLocation.top + 20}px`;
         movingLaser.remove();
+        scoreCount++;
+        document.querySelector('#score').innerText = scoreCount;
         e.target.parentNode.remove();
     }, 850);
+    
+    setTimeout(() => {
+        explosion.remove();
+    }, 1400)
 }
