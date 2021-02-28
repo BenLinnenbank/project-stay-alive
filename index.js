@@ -12,6 +12,10 @@ document.getElementById("myDIV").onscroll = () => {
     });
 };
 
+// veriable counting score
+
+let scoreCount = 0;
+
 // Random enemy generator
 setInterval(() => { 
     const alien = document.createElement('div');
@@ -21,11 +25,11 @@ setInterval(() => {
     const randomAlienImagePath = `./assets/ghost${randomNum}.png`;
     image.setAttribute('src', randomAlienImagePath);
     alien.appendChild(image);
-    alien.style.left = `${Math.floor(Math.random() * Math.floor(900))}px`;
-    alien.style.top = `${Math.floor(Math.random() * Math.floor(500))}px`;
+    alien.style.left = `${Math.floor(Math.random() * Math.floor(100))}vw`;
+    alien.style.top = `${Math.floor(Math.random() * Math.floor(100))}vh`;
     alien.addEventListener('click', (e) => fireLaser(e));
     playField.appendChild(alien);
-}, 1000);
+}, 2000);
 
 // Motion detector
 const detectHit = (enemy) => {
@@ -46,6 +50,9 @@ const fireLaser = (e) => {
     if (document.querySelector('#laser')) return;
     const enemyLocation = e.target.getBoundingClientRect();
     const playerLocation = player.getBoundingClientRect();
+
+    scoreCount++;
+    console.log(scoreCount)
 
     const laser = document.createElement('div');    
     laser.setAttribute('id', 'laser');

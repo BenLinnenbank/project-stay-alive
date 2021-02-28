@@ -40,3 +40,9 @@ img {
     border-radius: 50%;
     transition: all .9s ease;
 }
+
+::-webkit-scrollbar {
+    display: none;
+    
+}
+
